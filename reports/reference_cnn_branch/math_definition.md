@@ -1,6 +1,6 @@
 # Reference CNN Branch Mathematical Definition
 
-This branch is implemented internally as `BlockDirectionOptimizerV42`. External optimizer families named in the comparison notes are indexed in [../../REFERENCES.md](../../REFERENCES.md).
+This branch is implemented internally as `BCDOCNNReference`. External optimizer families named in the comparison notes are indexed in [../../REFERENCES.md](../../REFERENCES.md).
 
 The reference CNN branch keeps the accepted BCDO candidate set
 
@@ -26,7 +26,7 @@ Fallback on conv tensors becomes
 
 so coherent conv filters are less likely to fall back immediately to the raw gradient.
 
-The conv-safe step scaling from V4.1 remains:
+The retained conv-safe step scaling remains:
 
 - lower conv update cap
 - stronger energy-power term when conv support is weak

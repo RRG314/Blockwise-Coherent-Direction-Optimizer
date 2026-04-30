@@ -1,6 +1,6 @@
 # BCDO MPS Probe Current State
 
-This probe evaluates the accepted BCDO mainline implemented internally as `BlockDirectionOptimizerV4Fast`.
+This probe evaluates the accepted BCDO mainline implemented internally as `BlockwiseConsensusDirectionOptimizer`.
 
 External optimizer families and companion methods mentioned in this document are indexed in [../../REFERENCES.md](../../REFERENCES.md).
 

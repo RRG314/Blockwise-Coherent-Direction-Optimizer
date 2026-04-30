@@ -128,10 +128,10 @@ CMA-ES appears only as a conceptual contrast. It samples directions from a searc
 
 ## Internal comparison baselines
 
-Not every optimizer name appearing in the accepted reports is an external literature baseline. A few names refer to internal companion branches used during the broader research program:
+Not every optimizer name appearing in the accepted reports is an external literature baseline. A few entries refer to repository-local companion baselines that were kept only to preserve the benchmark context:
 
 - [Blockwise Consensus Direction Optimizer method notes](docs/METHOD.md): public method description for this repository.
-- [Reference CNN branch notes](docs/V42_REFERENCE.md): internal compatibility name `BlockDirectionOptimizerV42`, retained because some CNN-side ideas remain useful as a reference path.
-- `MagnetoHamiltonianAdam` and `HamiltonianAdamReal`: companion custom optimizers used in internal comparison tables during the broader project. They are not redistributed in this repository, so this file documents them only as internal comparators rather than as external literature baselines.
+- [Reference CNN branch notes](docs/CNN_REFERENCE.md): explanation of the retained CNN reference path used in the accepted comparison story.
+- the internal coherent momentum baseline family: companion custom comparators used in broader internal benchmark tables. They are not part of the public BCDO surface, so this file treats them as context for the accepted reports rather than as literature-defined public baselines.
 
-When the accepted BCDO reports mention one of those internal comparators, the goal is to preserve the original benchmark context, not to imply that this repository contains or republishes those methods.
+When the accepted BCDO reports mention that internal coherent momentum family, the purpose is only to preserve the benchmark context that produced the published CSVs and summary tables.

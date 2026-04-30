@@ -48,7 +48,7 @@ BCDO can operate in settings where conflicts appear, but it does not require mul
 
 ## Why the accepted mainline stayed simple
 
-This repository keeps the internal implementation name `BlockDirectionOptimizerV4Fast` for compatibility, but the public method name is BCDO. The accepted mainline stayed with the fast internal path because later branches repeatedly showed the same pattern: more candidates and more controller logic increased runtime faster than they improved results.
+This repository keeps the internal implementation name `BlockwiseConsensusDirectionOptimizer` for compatibility, but the public method name is BCDO. The accepted mainline stayed with the fast internal path because later branches repeatedly showed the same pattern: more candidates and more controller logic increased runtime faster than they improved results.
 
 The current public method therefore keeps:
 

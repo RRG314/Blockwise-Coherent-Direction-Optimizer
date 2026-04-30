@@ -1,9 +1,0 @@
-output_dir: reports/block_direction_v42
-device: cpu
-seeds: [11, 29, 47]
-ablation_tasks:
-  - digits_cnn
-  - breast_cancer_mlp
-  - oscillatory_valley
-  - saddle_objective
-ablation_epoch_scale: 0.40

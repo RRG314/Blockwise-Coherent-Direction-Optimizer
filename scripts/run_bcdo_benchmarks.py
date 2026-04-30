@@ -9,15 +9,14 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from optimizer_research import block_direction_v4_fast_default_config, load_yaml_config, run_block_direction_v4_fast_benchmarks  # noqa: E402
+from optimizer_research import bcdo_default_config, load_yaml_config, run_bcdo_benchmarks  # noqa: E402
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, default="")
+    parser.add_argument("--config", type=str, default=str(ROOT / "configs" / "bcdo_default.yaml"))
     args = parser.parse_args()
 
-    config = block_direction_v4_fast_default_config()
-    if args.config:
-        config.update(load_yaml_config(args.config))
-    run_block_direction_v4_fast_benchmarks(config)
+    config = bcdo_default_config()
+    config.update(load_yaml_config(args.config))
+    run_bcdo_benchmarks(config)

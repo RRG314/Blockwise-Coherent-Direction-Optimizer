@@ -10,9 +10,8 @@ version: "0.1.0"
 date-released: "2026-04-29"
 abstract: >-
   Research repository for the Blockwise Consensus Direction Optimizer (BCDO),
-  implemented internally as BlockDirectionOptimizerV4Fast, together with the
-  reference CNN branch, accepted benchmark artifacts, figures, and
-  reproducibility scripts.
+  together with the reference CNN branch, accepted benchmark artifacts,
+  figures, and reproducibility scripts.
 keywords:
   - optimizer
   - blockwise direction selection

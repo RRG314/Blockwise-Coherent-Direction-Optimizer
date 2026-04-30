@@ -1,0 +1,13 @@
+output_dir: reports/bcdo_mps_probe
+device: mps
+seeds: [11]
+use_tuning_results: false
+benchmark_epoch_scale: 0.35
+optimizers:
+  - blockwise_consensus_direction_optimizer
+  - bcdo_structured_core
+  - adamw
+  - rmsprop
+benchmark_tasks:
+  - breast_cancer_mlp
+  - oscillatory_valley

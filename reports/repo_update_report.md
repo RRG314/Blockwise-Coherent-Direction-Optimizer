@@ -4,7 +4,7 @@ This report records the documentation and repository-structure work completed be
 
 ## What changed
 
-The core code path was not renamed or rewritten for this pass. The internal class name `BlockDirectionOptimizerV4Fast` remains in place for compatibility with existing scripts, tests, and accepted benchmark artifacts. The public-facing repository language was tightened around the public name `BlockwiseConsensusDirectionOptimizer`, with the internal name treated as an implementation detail rather than the main brand.
+The repository was tightened around one public naming surface. The main implementation, public import path, scripts, configs, tests, report paths, and documentation now use `BlockwiseConsensusDirectionOptimizer` or the short alias `BCDO`. The older V-number branch labels were removed from the public repo surface so the repository reads as a first release rather than as an internal lineage dump.
 
 The largest missing piece before this pass was the citation layer. The repository already had accepted result snapshots, smoke and benchmark scripts, wrapper scripts, tests, and a reasonable README. What it did not have was one checked bibliography that explained why `SGD`, `RMSProp`, `AdamW`, `Lion`, `Muon`, `Shampoo`, `K-FAC`, `SAM`, `PCGrad`, and related families appear in the comparison story. That gap is now filled by [../REFERENCES.md](../REFERENCES.md), and the public docs and accepted report artifacts were updated to point back to it.
 
@@ -12,9 +12,7 @@ The method explanation layer was also expanded. Instead of leaving the public st
 
 ## What was intentionally not changed
 
-The repository still keeps the reference CNN branch and the older internal class names. That is intentional. Removing those names would make the accepted result files and the reproducibility path harder to follow, and it would not make the optimizer more honest. Instead, the public docs now explain clearly which names are public and which names are compatibility names.
-
-The accepted benchmark numbers were not regenerated in this pass. The repository continues to use the previously accepted BCDO snapshot stored in `reports/accepted_bcdo/`. This pass was about documentation integrity, citation integrity, repo readiness, and GitHub preparation, not about changing the benchmark line.
+The repository still keeps the reference CNN branch. That is intentional. It remains useful as an explanatory and comparative path for the CNN-side experiments even though it is not the accepted first-release mainline. The accepted benchmark numbers were also left intact; this pass was about consistency, documentation, citations, and release hygiene rather than about moving the benchmark target.
 
 ## Readiness outcome
 
@@ -26,4 +24,14 @@ After the documentation pass, the repository has:
 - a central references file with live literature links,
 - public docs that explain the method and its differences without hype language.
 
-The remaining work after this report is operational rather than descriptive: run the focused repo checks again, stage the repository cleanly, and push it to the private GitHub repository.
+The remaining work after this report is operational rather than descriptive: keep the focused repo checks green, maintain the public naming surface, and push the repository to the intended GitHub remote.
+
+## Suggested GitHub About text
+
+Suggested repository name:
+
+- `Blockwise Consensus Direction Optimizer`
+
+Suggested short description for the GitHub About field:
+
+- `A PyTorch optimizer that selects update directions blockwise from a small candidate set, using structural trust signals instead of transforming a single gradient direction.`

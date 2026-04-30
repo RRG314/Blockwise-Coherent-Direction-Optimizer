@@ -10,11 +10,11 @@ The block optimizer family is built around a single design decision:
 
 That differs from optimizers whose main mechanism is transforming one gradient direction with momentum, rescaling that direction coordinate-wise, or perturbing the objective before recomputing the gradient. BCDO treats direction choice as the first problem and step scaling as the second problem.
 
-The accepted implementation still carries the internal name `BlockDirectionOptimizerV4Fast`, but that name is only a compatibility hook. The public method name for this repository is BCDO, and the public import alias is `BlockwiseConsensusDirectionOptimizer`.
+The accepted implementation still carries the internal name `BlockwiseConsensusDirectionOptimizer`, but that name is only a compatibility hook. The public method name for this repository is BCDO, and the public import alias is `BlockwiseConsensusDirectionOptimizer`.
 
 ## Candidate set
 
-The accepted BCDO mainline, implemented internally as `BlockDirectionOptimizerV4Fast`, keeps the hot path intentionally small:
+The accepted BCDO mainline, implemented internally as `BlockwiseConsensusDirectionOptimizer`, keeps the hot path intentionally small:
 
 - `gradient`
 - `stable_consensus`
@@ -51,4 +51,4 @@ There is also a reproducibility reason. The accepted public benchmark snapshot, 
 
 ## Why the reference CNN branch remains
 
-`BlockDirectionOptimizerV42` is not dead code. It remains the reference branch for the CNN-trust hypothesis and still performs better than the mainline on some CNN-oriented cases. The public explanation of that branch is kept separately in [V42_REFERENCE.md](V42_REFERENCE.md) so that the accepted BCDO line can stay clean without pretending the branch history never happened.
+`BCDOCNNReference` is not dead code. It remains the reference branch for the CNN-trust hypothesis and still performs better than the mainline on some CNN-oriented cases. The public explanation of that branch is kept separately in [CNN_REFERENCE.md](CNN_REFERENCE.md) so that the accepted BCDO line can stay clean without pretending the branch history never happened.

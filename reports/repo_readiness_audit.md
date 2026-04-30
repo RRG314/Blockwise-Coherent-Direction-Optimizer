@@ -14,50 +14,47 @@ This audit also checks whether the public documentation matches the real reposit
 
 ### Optimizer implementation files
 
-- `src/optimizers/block_direction_optimizer_v4_fast.py`
 - `src/optimizers/blockwise_consensus_direction_optimizer.py`
-- `src/optimizers/block_direction_optimizer_v42.py`
+- `src/optimizers/bcdo_cnn_reference.py`
 - earlier lineage/support modules in `src/optimizers/`
 
 ### Public import paths
 
 - `from optimizers.blockwise_consensus_direction_optimizer import BlockwiseConsensusDirectionOptimizer`
 - `from optimizers import BlockwiseConsensusDirectionOptimizer, BCDO`
-- backward-compatible import:
-  - `from optimizers import BlockDirectionOptimizerV4Fast`
 
 ### Benchmark and report scripts
 
-- `scripts/run_block_direction_v4_fast_smoke.py`
-- `scripts/run_block_direction_v4_fast_tuning.py --config configs/block_direction_v4_fast_tuning.yaml`
-- `scripts/run_block_direction_v4_fast_benchmarks.py --config configs/block_direction_v4_fast_default.yaml`
-- `scripts/run_block_direction_v4_fast_ablation.py --config configs/block_direction_v4_fast_ablation.yaml`
-- `scripts/export_block_direction_v4_fast_report.py`
+- `scripts/run_bcdo_smoke.py`
+- `scripts/run_bcdo_tuning.py --config configs/bcdo_tuning.yaml`
+- `scripts/run_bcdo_benchmarks.py --config configs/bcdo_default.yaml`
+- `scripts/run_bcdo_ablation.py --config configs/bcdo_ablation.yaml`
+- `scripts/export_bcdo_report.py`
 - public wrappers:
   - `scripts/run_bcdo_smoke.py`
-  - `scripts/run_bcdo_benchmarks.py --config configs/block_direction_v4_fast_default.yaml`
+  - `scripts/run_bcdo_benchmarks.py --config configs/bcdo_default.yaml`
   - `scripts/export_bcdo_report.py`
 
 ### Config files
 
 - mainline:
-  - `configs/block_direction_v4_fast_default.yaml`
-  - `configs/block_direction_v4_fast_tuning.yaml`
-  - `configs/block_direction_v4_fast_ablation.yaml`
+  - `configs/bcdo_default.yaml`
+  - `configs/bcdo_tuning.yaml`
+  - `configs/bcdo_ablation.yaml`
 - probes:
-  - `configs/block_direction_v4_fast_cnn_probe.yaml`
-  - `configs/block_direction_v4_fast_cnn_tuning.yaml`
-  - `configs/block_direction_v4_fast_gpu.yaml`
-  - `configs/block_direction_v4_fast_pinn_probe.yaml`
-  - `configs/block_direction_v4_fast_pinn_tuning.yaml`
+  - `configs/bcdo_cnn_probe.yaml`
+  - `configs/bcdo_cnn_tuning.yaml`
+  - `configs/bcdo_gpu.yaml`
+  - `configs/bcdo_pinn_probe.yaml`
+  - `configs/bcdo_pinn_tuning.yaml`
 
 ### Tests
 
-- `tests/test_block_direction_v4_fast.py`
+- `tests/test_bcdo.py`
 - `tests/test_blockwise_consensus_direction_optimizer.py`
-- `tests/test_block_direction_benchmark_outputs.py`
+- `tests/test_bcdo_benchmark_outputs.py`
 - reference branch test retained:
-  - `tests/test_block_direction_v42.py`
+  - `tests/test_bcdo_cnn_reference.py`
 
 ### Reports and result CSVs
 
@@ -109,18 +106,12 @@ from optimizers.blockwise_consensus_direction_optimizer import BlockwiseConsensu
 Backward-compatible import:
 
 ```python
-from optimizers import BlockDirectionOptimizerV4Fast
+from optimizers import BlockwiseConsensusDirectionOptimizer
 ```
 
 ### Can someone run a smoke test?
 
 Yes.
-
-```bash
-python scripts/run_block_direction_v4_fast_smoke.py
-```
-
-or
 
 ```bash
 python scripts/run_bcdo_smoke.py
@@ -160,23 +151,13 @@ The repo does not claim accepted benchmark numbers from GPU runs.
 
 Yes.
 
-Historical summary files that do not define the current accepted public line were moved to:
-
-- `reports/block_direction_experimental_backup_20260429/`
+The public report surface is split into accepted, runnable-mainline, and probe folders. Older exploratory material is not part of the accepted first-release line.
 
 ### Are there stale or misleading claims?
 
-Public-facing docs were rewritten to avoid:
-
-- universal-superiority claims
-- state-of-the-art language
-- public-first naming around internal V4 lineage
-
-The public docs now also point to one checked reference index:
+The main public docs were rewritten to avoid universal-superiority claims, state-of-the-art language, and public-first naming around internal lineage labels. They also now point consistently to one checked reference index:
 
 - `REFERENCES.md`
-
-The repo still keeps internal class and config names for compatibility, but the README now treats them as implementation details rather than branding.
 
 ## Missing pieces and limits
 

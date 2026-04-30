@@ -2,7 +2,7 @@
 
 ## 1. What BCDO is
 
-- BCDO is the public name for the accepted block-direction mainline implemented internally as `BlockDirectionOptimizerV4Fast`.
+- BCDO is the public name for the accepted block-direction mainline implemented internally as `BlockwiseConsensusDirectionOptimizer`.
 - It keeps the blockwise direction-selection principle, preserves the fast dense/stress core, and folds in the lowest-cost validated CNN/general-task elements from the reference CNN branch.
 
 ## 2. How the accepted BCDO mainline differs from the older fast path
@@ -16,23 +16,23 @@
 ## 3. Best rows
 
 - Best BCDO row: `breast_cancer_mlp` with mean best val loss `0.061726` and mean best val accuracy `0.985677`.
-- Best legacy fast-path row: `breast_cancer_mlp` with mean best val loss `0.061726` and mean best val accuracy `0.985677`.
+- Best legacy fast-path row: unavailable.
 - Best reference CNN-branch row: `wine_mlp` with mean best val loss `0.052929` and mean best val accuracy `0.985185`.
 - Strongest baseline row: `sgd_momentum` on `wine_mlp` with mean best val loss `0.009711` and mean best val accuracy `1.000000`.
 
 ## 4. Competitive summary
 
-- BCDO wins vs the legacy fast path: `4` meaningful wins.
+- BCDO wins vs the legacy fast path: `0` meaningful wins.
 - BCDO wins vs the reference CNN branch: `4` meaningful wins.
 - BCDO wins vs AdamW: `7` meaningful wins; tracked 2x wins `5`.
 - BCDO wins vs RMSProp: `6` meaningful wins.
 - BCDO wins vs SGD momentum: `4` meaningful wins.
-- BCDO wins vs MagnetoHamiltonianAdam: `10` meaningful wins.
+- BCDO wins vs the internal coherent momentum comparator family: `10` meaningful wins.
 
 ## 5. Runtime
 
 - Mean BCDO runtime per step: `39.5980 ms`.
-- Mean legacy fast-path runtime per step: `41.5548 ms`.
+- Mean legacy fast-path runtime per step: unavailable.
 - Mean reference CNN-branch runtime per step: `32.9175 ms`.
 
 ## 6. Ablation findings

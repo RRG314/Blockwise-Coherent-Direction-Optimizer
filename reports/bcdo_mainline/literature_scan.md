@@ -2,23 +2,23 @@
 
 BCDO keeps the same literature pressure as the earlier block-direction branch: it is only interesting if blockwise direction **selection** does useful work that standard gradient **transforms** are not already doing.
 
-| family | representative_method | direction_or_transform | scope | difference_from_block_direction_v2 | required_baseline |
+| family | representative_method | direction_or_transform | scope | difference_from_bcdo_reference | required_baseline |
 | --- | --- | --- | --- | --- | --- |
-| Momentum / SGD | SGD with momentum | Transforms gradient into velocity; does not choose among multiple candidate directions. | Global / per-parameter | V2 explicitly selects blockwise directions from a candidate pool instead of using one momentum recursion. | sgd_momentum |
-| RMSProp | RMSProp | Per-parameter scaling of the gradient; no candidate selection. | Per-parameter | V2 keeps step magnitude separate and focuses on blockwise direction trust rather than coordinate-wise variance scaling. | rmsprop |
-| Adam / AdamW | AdamW | Transforms the gradient through EMA momentum and variance normalization. | Per-parameter | V2 is not an Adam-family moment method; it stores block trust and direction memories instead of Adam moments. | adamw |
-| Lion | Lion | Transforms the gradient into a signed momentum direction. | Per-parameter | V2 chooses blockwise directions from several structured candidates instead of committing to a single signed-momentum rule. | lion |
-| Muon / matrix orthogonalization | Muon | Transforms matrix gradients into orthogonalized matrix directions. | Matrix-wise / blockwise | V2 may include a Muon-like candidate, but only as one option inside a broader blockwise trust-and-selection rule. | muon_hybrid |
-| Shampoo | Shampoo | Transforms gradients with block/tensor preconditioners. | Tensor / block-wise | V2 is not a tensor preconditioner; it is a candidate-direction selector with lightweight block memory. | muon_hybrid |
-| K-FAC / natural gradient | K-FAC | Transforms gradients with an approximate inverse curvature matrix. | Layer / block-wise | V2 does not estimate curvature; it evaluates candidate directions by trust signals such as coherence and recoverability. | adamw |
-| SAM / ASAM | SAM | Transforms the objective / gradient using a perturb-and-recompute step. | Global / layer-wise perturbation | V2 uses cheap blockwise perturbation only to gate candidate trust, not to redefine the full objective. | adamw |
-| Gradient surgery | PCGrad | Selects/projectively edits a gradient combination across task losses. | Task-global / shared-parameter | V2 works with single-task blocks too and compares a richer candidate pool than pairwise task projections. | magneto_hamiltonian_adam |
-| Conflict-aware MTL | CAGrad | Chooses a joint gradient direction under conflict constraints. | Task-global | V2 operates blockwise and does not require multiple explicit task gradients to define its trust rule. | magneto_hamiltonian_adam |
-| Lookahead | Lookahead | Wraps another optimizer rather than defining a new local direction rule. | Global | V2 makes block-local direction choices directly; it is not a two-timescale wrapper. | adamw |
-| Learned optimizers | VeLO | Learns update transformations from data instead of hand-specifying the rule. | Global / meta-learned | V2 is hand-specified and interpretable, with explicit block trust components instead of a learned policy. | adamw |
-| Block coordinate / direction methods | Block coordinate descent | Selects coordinates/blocks, often with simple local descent rules. | Coordinate / block-wise | V2 updates all blocks but selects different candidate directions inside each block based on trust. | sgd_momentum |
-| Trust-region methods | Trust-region gradient methods | Uses trust to scale or reject steps. | Global / block-wise depending on method | V2 uses trust to rank discrete candidate directions inside each block, not just to scale one search direction. | adamw |
-| Evolutionary / black-box search | CMA-ES | Samples candidate directions rather than transforming the gradient. | Global population-based | V2 is still first-order and cheap enough for neural training; it scores a small deterministic candidate set per block. | sgd_momentum |
+| Momentum / SGD | SGD with momentum | Transforms gradient into velocity; does not choose among multiple candidate directions. | Global / per-parameter | BCDO explicitly selects blockwise directions from a candidate pool instead of using one momentum recursion. | sgd_momentum |
+| RMSProp | RMSProp | Per-parameter scaling of the gradient; no candidate selection. | Per-parameter | BCDO keeps step magnitude separate and focuses on blockwise direction trust rather than coordinate-wise variance scaling. | rmsprop |
+| Adam / AdamW | AdamW | Transforms the gradient through EMA momentum and variance normalization. | Per-parameter | BCDO is not an Adam-family moment method; it stores block trust and direction memories instead of Adam moments. | adamw |
+| Lion | Lion | Transforms the gradient into a signed momentum direction. | Per-parameter | BCDO chooses blockwise directions from several structured candidates instead of committing to a single signed-momentum rule. | lion |
+| Muon / matrix orthogonalization | Muon | Transforms matrix gradients into orthogonalized matrix directions. | Matrix-wise / blockwise | BCDO may include a Muon-like candidate, but only as one option inside a broader blockwise trust-and-selection rule. | muon_hybrid |
+| Shampoo | Shampoo | Transforms gradients with block/tensor preconditioners. | Tensor / block-wise | BCDO is not a tensor preconditioner; it is a candidate-direction selector with lightweight block memory. | muon_hybrid |
+| K-FAC / natural gradient | K-FAC | Transforms gradients with an approximate inverse curvature matrix. | Layer / block-wise | BCDO does not estimate curvature; it evaluates candidate directions by trust signals such as coherence and recoverability. | adamw |
+| SAM / ASAM | SAM | Transforms the objective / gradient using a perturb-and-recompute step. | Global / layer-wise perturbation | BCDO uses cheap blockwise perturbation only to gate candidate trust, not to redefine the full objective. | adamw |
+| Gradient surgery | PCGrad | Selects/projectively edits a gradient combination across task losses. | Task-global / shared-parameter | BCDO works with single-task blocks too and compares a richer candidate pool than pairwise task projections. | magneto_hamiltonian_adam |
+| Conflict-aware MTL | CAGrad | Chooses a joint gradient direction under conflict constraints. | Task-global | BCDO operates blockwise and does not require multiple explicit task gradients to define its trust rule. | magneto_hamiltonian_adam |
+| Lookahead | Lookahead | Wraps another optimizer rather than defining a new local direction rule. | Global | BCDO makes block-local direction choices directly; it is not a two-timescale wrapper. | adamw |
+| Learned optimizers | VeLO | Learns update transformations from data instead of hand-specifying the rule. | Global / meta-learned | BCDO is hand-specified and interpretable, with explicit block trust components instead of a learned policy. | adamw |
+| Block coordinate / direction methods | Block coordinate descent | Selects coordinates/blocks, often with simple local descent rules. | Coordinate / block-wise | BCDO updates all blocks but selects different candidate directions inside each block based on trust. | sgd_momentum |
+| Trust-region methods | Trust-region gradient methods | Uses trust to scale or reject steps. | Global / block-wise depending on method | BCDO uses trust to rank discrete candidate directions inside each block, not just to scale one search direction. | adamw |
+| Evolutionary / black-box search | CMA-ES | Samples candidate directions rather than transforming the gradient. | Global population-based | BCDO is still first-order and cheap enough for neural training; it scores a small deterministic candidate set per block. | sgd_momentum |
 
 ## BCDO-specific interpretation
 
@@ -41,4 +41,4 @@ BCDO keeps the same literature pressure as the earlier block-direction branch: i
 - [VeLO: Training Versatile Learned Optimizers by Scaling Up](https://arxiv.org/abs/2211.09760)
 - [Efficiency of Coordinate Descent Methods on Huge-Scale Optimization Problems](https://link.springer.com/article/10.1007/s10107-012-0597-5)
 - [Trust Region Methods](https://epubs.siam.org/doi/book/10.1137/1.9780898719857)
-- [Completely Derandomized Self-Adaptation in Evolution Strategies](https://link.springer.com/article/10.1023/A:1009669705971)
+- [Completely Derandomized Self-Adaptation in Evolution Strategies](https://docslib.org/doc/156104/completely-derandomized-self-adaptation-in-evolution-strategies)

@@ -2,7 +2,7 @@
 
 This folder separates accepted public artifacts from exploratory history.
 
-External optimizer families mentioned in the accepted public reports are documented centrally in [../REFERENCES.md](../REFERENCES.md). Internal compatibility names such as `BlockDirectionOptimizerV4Fast` and `BlockDirectionOptimizerV42` still appear in some report files because the accepted results were produced from those concrete code paths.
+External optimizer families mentioned in the accepted public reports are documented centrally in [../REFERENCES.md](../REFERENCES.md). Internal compatibility names such as `BlockwiseConsensusDirectionOptimizer` and `BCDOCNNReference` still appear in some report files because the accepted results were produced from those concrete code paths.
 
 ## Public report paths
 
@@ -19,18 +19,8 @@ External optimizer families mentioned in the accepted public reports are documen
 - `bcdo_mps_probe/`
   - MPS probe artifacts
 
-## Historical paths kept for compatibility
-
-- `accepted_v4_fast/`
-- `reference_v42/`
-- `cnn_probe_v4_fast/`
-- `pinn_probe_v4_fast/`
-- `mps_probe_v4_fast/`
-
-These remain so older scripts, notes, and links still resolve.
-
 ## Exploratory history
 
-- `block_direction_experimental_backup_20260429/`
+- `bcdo_experimental_backup_20260429/` if present in a local working copy or pre-cleanup archive
 
-This backup folder contains historical summary documents from exploratory branch work. They are retained for context, but they are not the accepted public benchmark line.
+Exploratory backup material is not part of the accepted first-release line. The public repository should be read through `accepted_bcdo/`, `bcdo_mainline/`, and the named probe folders above.

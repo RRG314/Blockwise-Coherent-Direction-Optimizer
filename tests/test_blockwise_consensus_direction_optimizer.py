@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import torch
 
-from optimizers import BCDO, BlockDirectionOptimizerV4Fast, BlockwiseConsensusDirectionOptimizer
+from optimizers import BCDO, BlockwiseConsensusDirectionOptimizer
 from optimizers.blockwise_consensus_direction_optimizer import BlockwiseConsensusDirectionOptimizer as ModuleAlias
 
 
 def test_public_aliases_resolve_to_mainline() -> None:
-    assert issubclass(BlockwiseConsensusDirectionOptimizer, BlockDirectionOptimizerV4Fast)
-    assert issubclass(ModuleAlias, BlockDirectionOptimizerV4Fast)
+    assert issubclass(BlockwiseConsensusDirectionOptimizer, ModuleAlias)
+    assert issubclass(ModuleAlias, BlockwiseConsensusDirectionOptimizer)
     assert BCDO is BlockwiseConsensusDirectionOptimizer
 
 
@@ -30,4 +30,3 @@ def test_public_alias_initializes_and_steps() -> None:
     assert any(not torch.allclose(a, b) for a, b in zip(before, after))
     diagnostics = optimizer.latest_diagnostics()
     assert "selected_candidate_type" in diagnostics
-

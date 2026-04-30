@@ -4,7 +4,7 @@ External optimizer families and internal comparison baselines mentioned in this 
 
 ## 1. What BCDO is
 
-- BCDO is the public name for the accepted block-direction mainline implemented internally as `BlockDirectionOptimizerV4Fast`.
+- BCDO is the public name for the accepted block-direction mainline implemented internally as `BlockwiseConsensusDirectionOptimizer`.
 - It keeps the blockwise direction-selection principle, preserves the fast dense/stress core, and folds in the lowest-cost validated CNN/general-task elements from the reference CNN branch.
 
 ## 2. How the accepted BCDO mainline differs from the older fast path

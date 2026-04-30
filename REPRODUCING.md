@@ -18,14 +18,14 @@ pip install -e .[dev]
 Run only the repo-local tests used to validate the public BCDO surface and benchmark outputs:
 
 ```bash
-pytest tests/test_block_direction_v4_fast.py -q
-pytest tests/test_blockwise_consensus_direction_optimizer.py tests/test_block_direction_benchmark_outputs.py -q
+pytest tests/test_bcdo.py -q
+pytest tests/test_blockwise_consensus_direction_optimizer.py tests/test_bcdo_benchmark_outputs.py -q
 ```
 
 ## Smoke run
 
 ```bash
-python scripts/run_block_direction_v4_fast_smoke.py
+python scripts/run_bcdo_smoke.py
 ```
 
 Public wrapper:
@@ -41,16 +41,9 @@ Expected output location:
 ## Benchmarks
 
 ```bash
-python scripts/run_block_direction_v4_fast_tuning.py --config configs/block_direction_v4_fast_tuning.yaml
-python scripts/run_block_direction_v4_fast_benchmarks.py --config configs/block_direction_v4_fast_default.yaml
-python scripts/run_block_direction_v4_fast_ablation.py --config configs/block_direction_v4_fast_ablation.yaml
-```
-
-Public wrappers:
-
-```bash
-python scripts/run_bcdo_benchmarks.py --config configs/block_direction_v4_fast_default.yaml
-python scripts/export_bcdo_report.py
+python scripts/run_bcdo_tuning.py --config configs/bcdo_tuning.yaml
+python scripts/run_bcdo_benchmarks.py --config configs/bcdo_default.yaml
+python scripts/run_bcdo_ablation.py --config configs/bcdo_ablation.yaml
 ```
 
 Expected output location:
@@ -73,4 +66,4 @@ These accepted artifacts are the source for the README result summary and the re
 
 - Use isolated serial runs. Do not overlap tuning, benchmark, and ablation jobs if you care about interpretable runtime data.
 - CPU and MPS paths are supported in this repo. CUDA tests run conditionally when CUDA is available.
-- Exploratory descendant reports are retained under `reports/block_direction_experimental_backup_20260429/` and are not the accepted public benchmark line.
+- Exploratory descendant reports are not part of the accepted public benchmark line.

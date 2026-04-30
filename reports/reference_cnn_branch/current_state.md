@@ -1,6 +1,6 @@
 # Reference CNN Branch Current State
 
-The reference CNN branch is implemented internally as `BlockDirectionOptimizerV42`.
+The reference CNN branch is implemented internally as `BCDOCNNReference`.
 
 External optimizer families and companion methods mentioned in this document are indexed in [../../REFERENCES.md](../../REFERENCES.md).
 

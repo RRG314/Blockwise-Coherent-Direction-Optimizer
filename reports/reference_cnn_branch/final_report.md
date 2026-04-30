@@ -4,7 +4,7 @@ External optimizer families and internal comparison baselines mentioned in this 
 
 ## 1. What the reference CNN branch is
 
-- The reference CNN branch is implemented internally as `BlockDirectionOptimizerV42`.
+- The reference CNN branch is implemented internally as `BCDOCNNReference`.
 - It is a conv-aware refinement of the accepted fast mainline that uses conv structure as trust, not as a default new direction.
 - It keeps the accepted BCDO candidate set unchanged and uses conv-safe scaling plus conv-aware trust/fallback rules.
 

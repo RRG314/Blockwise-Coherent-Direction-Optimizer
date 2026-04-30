@@ -2,7 +2,7 @@
 
 External optimizer families and companion methods mentioned in this document are indexed in [../../REFERENCES.md](../../REFERENCES.md).
 
-The public BCDO mainline is implemented internally as `BlockDirectionOptimizerV4Fast` and keeps the legacy fast path and the reference CNN branch as explicit comparison baselines.
+The public BCDO mainline is implemented internally as `BlockwiseConsensusDirectionOptimizer` and keeps the legacy fast path and the reference CNN branch as explicit comparison baselines.
 
 ## Why the accepted BCDO mainline exists
 

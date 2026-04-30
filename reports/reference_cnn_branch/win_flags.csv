@@ -1,37 +1,37 @@
 task,optimizer,baseline,win,two_x,rationale
-breast_cancer_mlp,block_direction_optimizer_v42,block_direction_optimizer_v4_fast,False,False,no clear advantage
-digits_cnn,block_direction_optimizer_v42,block_direction_optimizer_v4_fast,True,False,higher best validation accuracy
-digits_mlp,block_direction_optimizer_v42,block_direction_optimizer_v4_fast,False,False,no clear advantage
-oscillatory_valley,block_direction_optimizer_v42,block_direction_optimizer_v4_fast,True,False,lower best validation loss
-plateau_escape_objective,block_direction_optimizer_v42,block_direction_optimizer_v4_fast,True,False,lower best validation loss
-saddle_objective,block_direction_optimizer_v42,block_direction_optimizer_v4_fast,True,False,lower best validation loss
-breast_cancer_mlp,block_direction_optimizer_v42,block_direction_optimizer_v41,True,False,matched accuracy with fewer steps
-digits_cnn,block_direction_optimizer_v42,block_direction_optimizer_v41,True,False,higher best validation accuracy
-digits_mlp,block_direction_optimizer_v42,block_direction_optimizer_v41,False,False,no clear advantage
-oscillatory_valley,block_direction_optimizer_v42,block_direction_optimizer_v41,True,False,lower best validation loss
-plateau_escape_objective,block_direction_optimizer_v42,block_direction_optimizer_v41,True,False,lower best validation loss
-saddle_objective,block_direction_optimizer_v42,block_direction_optimizer_v41,True,False,lower best validation loss
-breast_cancer_mlp,block_direction_optimizer_v42,magneto_hamiltonian_adam,True,False,higher best validation accuracy
-digits_cnn,block_direction_optimizer_v42,magneto_hamiltonian_adam,True,False,higher best validation accuracy
-digits_mlp,block_direction_optimizer_v42,magneto_hamiltonian_adam,True,False,higher best validation accuracy
-oscillatory_valley,block_direction_optimizer_v42,magneto_hamiltonian_adam,True,True,lower best validation loss
-plateau_escape_objective,block_direction_optimizer_v42,magneto_hamiltonian_adam,True,False,lower best validation loss
-saddle_objective,block_direction_optimizer_v42,magneto_hamiltonian_adam,True,False,lower best validation loss
-breast_cancer_mlp,block_direction_optimizer_v42,adamw,False,False,no clear advantage
-digits_cnn,block_direction_optimizer_v42,adamw,True,False,higher best validation accuracy
-digits_mlp,block_direction_optimizer_v42,adamw,False,False,no clear advantage
-oscillatory_valley,block_direction_optimizer_v42,adamw,True,True,lower best validation loss
-plateau_escape_objective,block_direction_optimizer_v42,adamw,True,True,lower best validation loss
-saddle_objective,block_direction_optimizer_v42,adamw,True,True,lower best validation loss
-breast_cancer_mlp,block_direction_optimizer_v42,rmsprop,False,False,no clear advantage
-digits_cnn,block_direction_optimizer_v42,rmsprop,False,False,no clear advantage
-digits_mlp,block_direction_optimizer_v42,rmsprop,False,False,no clear advantage
-oscillatory_valley,block_direction_optimizer_v42,rmsprop,True,False,lower best validation loss
-plateau_escape_objective,block_direction_optimizer_v42,rmsprop,True,False,lower best validation loss
-saddle_objective,block_direction_optimizer_v42,rmsprop,True,False,lower best validation loss
-breast_cancer_mlp,block_direction_optimizer_v42,sgd_momentum,True,True,lower loss variance with comparable score
-digits_cnn,block_direction_optimizer_v42,sgd_momentum,True,False,higher best validation accuracy
-digits_mlp,block_direction_optimizer_v42,sgd_momentum,False,False,no clear advantage
-oscillatory_valley,block_direction_optimizer_v42,sgd_momentum,True,False,lower best validation loss
-plateau_escape_objective,block_direction_optimizer_v42,sgd_momentum,True,False,lower best validation loss
-saddle_objective,block_direction_optimizer_v42,sgd_momentum,True,False,lower best validation loss
+breast_cancer_mlp,bcdo_cnn_reference,blockwise_consensus_direction_optimizer,False,False,no clear advantage
+digits_cnn,bcdo_cnn_reference,blockwise_consensus_direction_optimizer,True,False,higher best validation accuracy
+digits_mlp,bcdo_cnn_reference,blockwise_consensus_direction_optimizer,False,False,no clear advantage
+oscillatory_valley,bcdo_cnn_reference,blockwise_consensus_direction_optimizer,True,False,lower best validation loss
+plateau_escape_objective,bcdo_cnn_reference,blockwise_consensus_direction_optimizer,True,False,lower best validation loss
+saddle_objective,bcdo_cnn_reference,blockwise_consensus_direction_optimizer,True,False,lower best validation loss
+breast_cancer_mlp,bcdo_cnn_reference,bcdo_conv_experiment,True,False,matched accuracy with fewer steps
+digits_cnn,bcdo_cnn_reference,bcdo_conv_experiment,True,False,higher best validation accuracy
+digits_mlp,bcdo_cnn_reference,bcdo_conv_experiment,False,False,no clear advantage
+oscillatory_valley,bcdo_cnn_reference,bcdo_conv_experiment,True,False,lower best validation loss
+plateau_escape_objective,bcdo_cnn_reference,bcdo_conv_experiment,True,False,lower best validation loss
+saddle_objective,bcdo_cnn_reference,bcdo_conv_experiment,True,False,lower best validation loss
+breast_cancer_mlp,bcdo_cnn_reference,magneto_hamiltonian_adam,True,False,higher best validation accuracy
+digits_cnn,bcdo_cnn_reference,magneto_hamiltonian_adam,True,False,higher best validation accuracy
+digits_mlp,bcdo_cnn_reference,magneto_hamiltonian_adam,True,False,higher best validation accuracy
+oscillatory_valley,bcdo_cnn_reference,magneto_hamiltonian_adam,True,True,lower best validation loss
+plateau_escape_objective,bcdo_cnn_reference,magneto_hamiltonian_adam,True,False,lower best validation loss
+saddle_objective,bcdo_cnn_reference,magneto_hamiltonian_adam,True,False,lower best validation loss
+breast_cancer_mlp,bcdo_cnn_reference,adamw,False,False,no clear advantage
+digits_cnn,bcdo_cnn_reference,adamw,True,False,higher best validation accuracy
+digits_mlp,bcdo_cnn_reference,adamw,False,False,no clear advantage
+oscillatory_valley,bcdo_cnn_reference,adamw,True,True,lower best validation loss
+plateau_escape_objective,bcdo_cnn_reference,adamw,True,True,lower best validation loss
+saddle_objective,bcdo_cnn_reference,adamw,True,True,lower best validation loss
+breast_cancer_mlp,bcdo_cnn_reference,rmsprop,False,False,no clear advantage
+digits_cnn,bcdo_cnn_reference,rmsprop,False,False,no clear advantage
+digits_mlp,bcdo_cnn_reference,rmsprop,False,False,no clear advantage
+oscillatory_valley,bcdo_cnn_reference,rmsprop,True,False,lower best validation loss
+plateau_escape_objective,bcdo_cnn_reference,rmsprop,True,False,lower best validation loss
+saddle_objective,bcdo_cnn_reference,rmsprop,True,False,lower best validation loss
+breast_cancer_mlp,bcdo_cnn_reference,sgd_momentum,True,True,lower loss variance with comparable score
+digits_cnn,bcdo_cnn_reference,sgd_momentum,True,False,higher best validation accuracy
+digits_mlp,bcdo_cnn_reference,sgd_momentum,False,False,no clear advantage
+oscillatory_valley,bcdo_cnn_reference,sgd_momentum,True,False,lower best validation loss
+plateau_escape_objective,bcdo_cnn_reference,sgd_momentum,True,False,lower best validation loss
+saddle_objective,bcdo_cnn_reference,sgd_momentum,True,False,lower best validation loss

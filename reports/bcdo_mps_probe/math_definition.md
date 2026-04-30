@@ -1,6 +1,6 @@
 # BCDO MPS Probe Mathematical Definition
 
-This probe evaluates the accepted BCDO mainline implemented internally as `BlockDirectionOptimizerV4Fast`. External optimizer families named in the interpretation of this method are indexed in [../../REFERENCES.md](../../REFERENCES.md).
+This probe evaluates the accepted BCDO mainline implemented internally as `BlockwiseConsensusDirectionOptimizer`. External optimizer families named in the interpretation of this method are indexed in [../../REFERENCES.md](../../REFERENCES.md).
 
 Split parameters into blocks `B_i` and compute block gradients `g_i`.
 

@@ -8,19 +8,13 @@ Most optimizers start from one gradient direction and then smooth it, rescale it
 
 This is a specialist optimizer for regimes where raw gradient direction is unstable, conflicting, or structurally misleading. It is not a universal replacement for standard optimizers.
 
-The public optimizer name in this repository is:
-
-- `BlockwiseConsensusDirectionOptimizer`
-
-The accepted internal class name remains:
-
-- `BlockDirectionOptimizerV4Fast`
+The public optimizer name in this repository is `BlockwiseConsensusDirectionOptimizer`, with `BCDO` as the short alias used in code and reports.
 
 The repository also keeps one reference CNN branch:
 
-- `BlockDirectionOptimizerV42` (documented in [docs/V42_REFERENCE.md](docs/V42_REFERENCE.md))
+- `BCDOCNNReference` (documented in [docs/CNN_REFERENCE.md](docs/CNN_REFERENCE.md))
 
-The public explanation of the method lives in [docs/METHOD.md](docs/METHOD.md), the side-by-side comparison notes live in [docs/COMPARISONS.md](docs/COMPARISONS.md), and the external literature used throughout the repo is collected in [REFERENCES.md](REFERENCES.md).
+The public explanation of the method lives in [docs/METHOD.md](docs/METHOD.md), the side-by-side comparison notes live in [docs/COMPARISONS.md](docs/COMPARISONS.md), and the external literature used throughout the repo is collected in [REFERENCES.md](REFERENCES.md). The repository-level attribution note is in [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
 
 ## Relation to existing optimizers
 
@@ -30,7 +24,7 @@ BCDO is different in a narrower and more concrete way. It does not start from on
 
 ## Method
 
-The accepted public mainline is implemented in [src/optimizers/block_direction_optimizer_v4_fast.py](src/optimizers/block_direction_optimizer_v4_fast.py). The public alias is thin by design; the algorithm lives in one implementation so that the code path used in the accepted reports is the same code path a newcomer imports.
+The accepted public mainline is implemented in [src/optimizers/blockwise_consensus_direction_optimizer.py](src/optimizers/blockwise_consensus_direction_optimizer.py). The public alias is thin by design; the algorithm lives in one implementation so that the code path used in the accepted reports is the same code path a newcomer imports.
 
 ### Block formation
 
@@ -40,7 +34,7 @@ BCDO uses an internal smart block-formation rule:
 - larger matrices use row-level blocks
 - convolutional tensors are handled through a typed profile split
 
-The implementation key for this grouping rule is still called `smart_v4` in the code and configs. That name is retained for compatibility, but it is not part of the public method name.
+The implementation key for this grouping rule is still called `smart_bcdo` in the code and configs. That name is retained for compatibility, but it is not part of the public method name.
 
 ### Candidate set
 
@@ -82,9 +76,8 @@ Convolutional tensors use typed conv-safe scaling on top of the same direction-s
 
 Main files in this repository:
 
-- [src/optimizers/block_direction_optimizer_v4_fast.py](src/optimizers/block_direction_optimizer_v4_fast.py)
 - [src/optimizers/blockwise_consensus_direction_optimizer.py](src/optimizers/blockwise_consensus_direction_optimizer.py)
-- [src/optimizers/block_direction_optimizer_v42.py](src/optimizers/block_direction_optimizer_v42.py)
+- [src/optimizers/bcdo_cnn_reference.py](src/optimizers/bcdo_cnn_reference.py)
 - [src/optimizer_research](src/optimizer_research)
 - [tests](tests)
 - [scripts](scripts)
@@ -137,7 +130,7 @@ print(optimizer.latest_diagnostics())
 Backward-compatible imports still work:
 
 ```python
-from optimizers import BlockDirectionOptimizerV4Fast
+from optimizers import BCDO, BlockwiseConsensusDirectionOptimizer
 ```
 
 ## Running tests
@@ -145,8 +138,8 @@ from optimizers import BlockDirectionOptimizerV4Fast
 Focused repo-local tests:
 
 ```bash
-pytest tests/test_block_direction_v4_fast.py -q
-pytest tests/test_blockwise_consensus_direction_optimizer.py tests/test_block_direction_benchmark_outputs.py -q
+pytest tests/test_bcdo.py -q
+pytest tests/test_blockwise_consensus_direction_optimizer.py tests/test_bcdo_benchmark_outputs.py -q
 ```
 
 These are the tests used as repo-readiness evidence. Full workspace tests are not used here because unrelated repositories in the parent workspace can fail independently.
@@ -156,18 +149,10 @@ These are the tests used as repo-readiness evidence. Full workspace tests are no
 Mainline scripts:
 
 ```bash
-python scripts/run_block_direction_v4_fast_smoke.py
-python scripts/run_block_direction_v4_fast_tuning.py --config configs/block_direction_v4_fast_tuning.yaml
-python scripts/run_block_direction_v4_fast_benchmarks.py --config configs/block_direction_v4_fast_default.yaml
-python scripts/run_block_direction_v4_fast_ablation.py --config configs/block_direction_v4_fast_ablation.yaml
-python scripts/export_block_direction_v4_fast_report.py
-```
-
-Public wrappers:
-
-```bash
 python scripts/run_bcdo_smoke.py
-python scripts/run_bcdo_benchmarks.py --config configs/block_direction_v4_fast_default.yaml
+python scripts/run_bcdo_tuning.py --config configs/bcdo_tuning.yaml
+python scripts/run_bcdo_benchmarks.py --config configs/bcdo_default.yaml
+python scripts/run_bcdo_ablation.py --config configs/bcdo_ablation.yaml
 python scripts/export_bcdo_report.py
 ```
 
@@ -205,7 +190,7 @@ Main public report paths:
 - [reports/bcdo_mps_probe](reports/bcdo_mps_probe)
 - [reports/repo_readiness_audit.md](reports/repo_readiness_audit.md)
 
-Historical exploratory material is retained separately under the experimental backup folder and is not the accepted public benchmark line.
+Historical exploratory material is kept out of the accepted public line and should not be read as the first-release benchmark story.
 
 The accepted public reports now point back to [REFERENCES.md](REFERENCES.md) whenever they discuss external optimizer families. That keeps the report layer grounded in one checked bibliography instead of a pile of partial in-file lists.
 
@@ -217,7 +202,7 @@ The accepted public reports now point back to [REFERENCES.md](REFERENCES.md) whe
 - PINNs are not currently a winning target for this optimizer family.
 - The best current interpretation is a structured specialist/generalist hybrid, not a broad default replacement.
 
-If you want the longer explanation of those limits, including why the reference CNN branch is still separate, see [docs/V42_REFERENCE.md](docs/V42_REFERENCE.md) and [reports/repo_update_report.md](reports/repo_update_report.md).
+If you want the longer explanation of those limits, including why the reference CNN branch is still separate, see [docs/CNN_REFERENCE.md](docs/CNN_REFERENCE.md) and [reports/repo_update_report.md](reports/repo_update_report.md).
 
 ## Roadmap
 

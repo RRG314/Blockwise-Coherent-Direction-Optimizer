@@ -1,0 +1,25 @@
+output_dir: reports/bcdo_mainline
+device: cpu
+seeds: [11, 29, 47]
+use_tuning_results: true
+benchmark_epoch_scale: 0.8
+optimizers:
+  - blockwise_consensus_direction_optimizer
+  - blockwise_consensus_direction_optimizer_legacy
+  - bcdo_cnn_reference
+  - magneto_hamiltonian_adam
+  - adamw
+  - rmsprop
+  - sgd_momentum
+benchmark_tasks:
+  - breast_cancer_mlp
+  - moons_mlp
+  - wine_mlp
+  - digits_mlp
+  - digits_cnn
+  - oscillatory_valley
+  - saddle_objective
+  - plateau_escape_objective
+  - direction_reversal_objective
+  - block_structure_classification
+  - low_rank_matrix_objective

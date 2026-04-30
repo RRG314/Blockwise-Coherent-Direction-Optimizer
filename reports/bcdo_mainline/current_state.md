@@ -1,6 +1,6 @@
 # Blockwise Consensus Direction Optimizer Current State
 
-The public BCDO mainline is implemented internally as `BlockDirectionOptimizerV4Fast` and keeps the legacy fast path and the reference CNN branch as explicit comparison baselines.
+The public BCDO mainline is implemented internally as `BlockwiseConsensusDirectionOptimizer` and keeps the legacy fast path and the reference CNN branch as explicit comparison baselines.
 
 ## Why the accepted BCDO mainline exists
 
@@ -15,7 +15,7 @@ The public BCDO mainline is implemented internally as `BlockDirectionOptimizerV4
 - Removes per-candidate recoverability from the default hot path.
 - Uses typed conv/dense profiles inside the same optimizer class.
 - Uses cheap conv structure support and conv-safe scaling instead of the heavier reference-branch trust path.
-- Keeps `smart_v4` grouping and block-energy normalization.
+- Keeps `smart_bcdo` grouping and block-energy normalization.
 
 ## What the accepted mainline is trying to prove
 
