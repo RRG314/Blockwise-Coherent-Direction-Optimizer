@@ -80,6 +80,11 @@ The reference CNN branch scripts are:
 - [../scripts/run_bcdo_cnn_reference_ablation.py](../scripts/run_bcdo_cnn_reference_ablation.py)
 - [../scripts/export_bcdo_cnn_reference_report.py](../scripts/export_bcdo_cnn_reference_report.py)
 
+The paper-facing helper scripts are:
+
+- [../scripts/build_paper_artifacts.py](../scripts/build_paper_artifacts.py)
+- [../scripts/run_paper_smoke.py](../scripts/run_paper_smoke.py)
+
 Together, these scripts cover the accepted mainline, the current runnable mainline, and the conv-aware reference branch. There is no notebook in the BCDO repo at the moment; the reproducibility surface is script-first rather than notebook-first.
 
 ## 5. Config Inventory
@@ -125,14 +130,24 @@ The top-level package and documentation files that define the repo surface are:
 - [../LICENSE](../LICENSE)
 - [../pyproject.toml](../pyproject.toml)
 - [../CITATION.cff](../CITATION.cff)
+- [../docs/CLAIM.md](../docs/CLAIM.md)
 - [../docs/METHOD.md](../docs/METHOD.md)
 - [../docs/COMPARISONS.md](../docs/COMPARISONS.md)
 - [../docs/CNN_REFERENCE.md](../docs/CNN_REFERENCE.md)
 - [../docs/FAILURE_CASES.md](../docs/FAILURE_CASES.md)
 - [repo_readiness_audit.md](repo_readiness_audit.md)
 - [repo_update_report.md](repo_update_report.md)
+- [../paper/bcdo_draft.md](../paper/bcdo_draft.md)
+- [../paper/bcdo_claims_audit.md](../paper/bcdo_claims_audit.md)
 
 The bibliography and external optimizer references are centralized in [../REFERENCES.md](../REFERENCES.md). That file is the canonical reference index for BCDO’s comparisons with SGD, momentum, RMSProp, AdamW, Muon, Shampoo, K-FAC, SAM, and the other named external methods that appear in the repo.
+
+The current runnable example layer now also includes:
+
+- [../examples/basic_usage.py](../examples/basic_usage.py)
+- [../examples/bcdo_minimal_mlp.py](../examples/bcdo_minimal_mlp.py)
+- [../examples/bcdo_blockwise_direction_demo.py](../examples/bcdo_blockwise_direction_demo.py)
+- [../examples/bcdo_compare_against_adamw.py](../examples/bcdo_compare_against_adamw.py)
 
 ## 8. Report and Artifact Inventory
 
@@ -144,6 +159,7 @@ The checked-in report families are:
 - [bcdo_cnn_probe](bcdo_cnn_probe)
 - [bcdo_pinn_probe](bcdo_pinn_probe)
 - [bcdo_mps_probe](bcdo_mps_probe)
+- [../paper](../paper)
 
 Each of the main report families contains some or all of the following artifact types:
 
@@ -195,9 +211,9 @@ The accepted competitive summary is:
 
 The accepted runtime summary is:
 
-- mean BCDO runtime per step: `39.5980 ms`
-- mean legacy fast-path runtime per step: `41.5548 ms`
-- mean reference CNN-branch runtime per step: `32.9175 ms`
+- mean BCDO runtime per step: `24.0797 ms`
+- mean legacy fast-path runtime per step: `23.8415 ms`
+- mean reference CNN-branch runtime per step: `22.8265 ms`
 
 The accepted ablation story is also clear. Typed conv/dense split, cheap conv structure support, matrix consensus, block structure, stable consensus, and trusted-direction memory all help the accepted line. Recoverability periodic gating hurts the accepted line and is not part of the public default path.
 

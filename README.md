@@ -28,7 +28,7 @@ Most optimizers start from one gradient direction and then smooth it, rescale it
 
 This is the central idea of the repository. BCDO is not trying to be “AdamW plus extra gates.” It is also not trying to become a full second-order optimizer, a curvature model, or a matrix-preconditioned natural-gradient method. The main decision is discrete and local: which direction should this block trust right now?
 
-The public documentation is organized around that question. The method explanation is in [docs/METHOD.md](docs/METHOD.md), the comparison notes are in [docs/COMPARISONS.md](docs/COMPARISONS.md), the literature used in those comparisons is collected in [REFERENCES.md](REFERENCES.md), and the attribution note for repository preparation is in [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
+The public documentation is organized around that question. The focused public claim is in [docs/CLAIM.md](docs/CLAIM.md), the method explanation is in [docs/METHOD.md](docs/METHOD.md), the comparison notes are in [docs/COMPARISONS.md](docs/COMPARISONS.md), the literature used in those comparisons is collected in [REFERENCES.md](REFERENCES.md), and the attribution note for repository preparation is in [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
 
 The public optimizer name in this repository is `BlockwiseConsensusDirectionOptimizer`, with `BCDO` as the short alias used in code and reports.
 
@@ -52,7 +52,7 @@ BCDO is aimed at training situations where the local gradient is not obviously t
 
 The optimizer therefore asks a different question from standard adaptive methods. Instead of only asking how large an update should be, it also asks whether the block should trust the raw gradient, a consensus direction, a memory direction, or a structure-aware matrix direction. The accepted benchmark suite is built around that narrower question rather than around a broad “best default optimizer” claim.
 
-For a newcomer, the most useful first pass is usually: read [docs/METHOD.md](docs/METHOD.md), run the smoke command once, and then inspect [reports/accepted_bcdo/final_report.md](reports/accepted_bcdo/final_report.md). That path shows the public code, the public claim, and the accepted result snapshot before the broader branch history or probe folders get in the way.
+For a newcomer, the most useful first pass is usually: read [docs/CLAIM.md](docs/CLAIM.md), read [docs/METHOD.md](docs/METHOD.md), run the smoke command once, and then inspect [reports/accepted_bcdo/final_report.md](reports/accepted_bcdo/final_report.md). That path shows the public code, the public claim, and the accepted result snapshot before the broader branch history or probe folders get in the way.
 
 ## Method
 
@@ -223,6 +223,23 @@ python scripts/export_bcdo_cnn_reference_report.py
 The accepted public snapshot and the current runnable mainline are kept separate on purpose. That lets the repository preserve the accepted first-release benchmark line while still supporting new smoke and export runs from the current code.
 
 That split is part of the repo’s public discipline, not a packaging accident. The accepted snapshot is the line the README cites. The runnable mainline is where fresh local runs should write. Keeping them separate avoids quietly replacing the first-release benchmark story every time the scripts are re-run.
+
+Minimal local examples:
+
+```bash
+python examples/bcdo_minimal_mlp.py
+python examples/bcdo_blockwise_direction_demo.py
+python examples/bcdo_compare_against_adamw.py
+```
+
+Paper artifact build:
+
+```bash
+python scripts/build_paper_artifacts.py
+python scripts/run_paper_smoke.py
+```
+
+The paper-facing draft, tables, figures, and claims audit are generated locally under `paper/`. They are built from the checked-in report CSVs and probe folders instead of silently creating fresh benchmark claims.
 
 ## What it compares against
 

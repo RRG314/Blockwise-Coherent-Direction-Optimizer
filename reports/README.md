@@ -26,3 +26,5 @@ External optimizer families mentioned in the accepted public reports are documen
 - `bcdo_experimental_backup_20260429/` if present in a local working copy or pre-cleanup archive
 
 Exploratory backup material is not part of the accepted first-release line. The public repository should be read through `accepted_bcdo/`, `bcdo_mainline/`, and the named probe folders above.
+
+Paper-facing draft material is generated separately under `paper/`. That folder is built from the checked-in snapshot and probe CSVs so that paper-style summaries stay tied to the underlying report evidence.

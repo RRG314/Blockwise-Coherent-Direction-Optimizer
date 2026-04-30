@@ -1,0 +1,7 @@
+{
+  "claims_audit": "paper/bcdo_claims_audit.md",
+  "draft": "paper/bcdo_draft.md",
+  "figures_dir": "paper/figures",
+  "summary_csv": "paper/bcdo_results_summary.csv",
+  "tables_dir": "paper/tables"
+}

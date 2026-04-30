@@ -8,7 +8,7 @@ This audit covers the standalone Blockwise Consensus Direction Optimizer reposit
 
 The goal is to verify that a fresh clone can install the repo, import the optimizer, run a smoke test, inspect accepted results, and reproduce the documented report flow without depending on unrelated workspace repositories.
 
-This audit also checks whether the public documentation matches the real repository layout and whether the public docs now point to one checked literature index.
+This audit also checks whether the public documentation matches the real repository layout, whether the public docs now point to one checked literature index, and whether the repo can generate a local paper-facing summary package from the checked-in artifacts.
 
 ## Inventory summary
 
@@ -68,6 +68,8 @@ This audit also checks whether the public documentation matches the real reposit
   - `reports/bcdo_cnn_probe/`
   - `reports/bcdo_pinn_probe/`
   - `reports/bcdo_mps_probe/`
+- paper-facing artifact layer:
+  - `paper/`
 
 ### Dependency file
 
@@ -115,6 +117,7 @@ Yes.
 
 ```bash
 python scripts/run_bcdo_smoke.py
+python scripts/run_paper_smoke.py
 ```
 
 ### Can someone reproduce the accepted benchmark summary?
@@ -175,3 +178,4 @@ This repository is now clone-and-run ready for its current research scope:
 - smoke-testable
 - benchmark-report reproducible
 - equipped with accepted public artifacts and separated exploratory history
+- able to regenerate local paper-facing tables and figures from checked-in CSVs

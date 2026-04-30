@@ -2,7 +2,7 @@
 
 This repository is set up so a fresh clone can run focused validation and reproduce the accepted Blockwise Consensus Direction Optimizer report flow without relying on unrelated workspace code.
 
-If you need the method explanation and the external optimizer references alongside the commands below, use [docs/METHOD.md](docs/METHOD.md), [docs/COMPARISONS.md](docs/COMPARISONS.md), and [REFERENCES.md](REFERENCES.md).
+If you need the method explanation and the external optimizer references alongside the commands below, use [docs/CLAIM.md](docs/CLAIM.md), [docs/METHOD.md](docs/METHOD.md), [docs/COMPARISONS.md](docs/COMPARISONS.md), and [REFERENCES.md](REFERENCES.md).
 
 If you are new to the repo, the shortest useful path is:
 
@@ -11,6 +11,13 @@ If you are new to the repo, the shortest useful path is:
 3. read [reports/accepted_bcdo/final_report.md](reports/accepted_bcdo/final_report.md)
 
 That gives you the public method, the public code path, and the accepted benchmark line before you dig into the reference CNN branch or the probe folders.
+
+If you are reviewing the repo as a draft paper package rather than only as code, the shortest useful follow-up path is:
+
+1. run `python scripts/build_paper_artifacts.py`
+2. read `paper/bcdo_claims_audit.md`
+3. read `paper/bcdo_draft.md`
+4. inspect `paper/tables/` and `paper/figures/`
 
 ## Environment setup
 
@@ -28,6 +35,14 @@ Run only the repo-local tests used to validate the public BCDO surface and bench
 ```bash
 pytest tests/test_bcdo.py -q
 pytest tests/test_blockwise_consensus_direction_optimizer.py tests/test_bcdo_benchmark_outputs.py -q
+```
+
+## Minimal examples
+
+```bash
+python examples/bcdo_minimal_mlp.py
+python examples/bcdo_blockwise_direction_demo.py
+python examples/bcdo_compare_against_adamw.py
 ```
 
 ## Smoke run
@@ -78,3 +93,20 @@ They are kept separate from `reports/bcdo_mainline/` on purpose. The accepted sn
 - CPU and MPS paths are supported in this repo. CUDA tests run conditionally when CUDA is available.
 - Exploratory descendant reports are not part of the accepted public benchmark line.
 - Failure boundaries and weaker domains are documented in [docs/FAILURE_CASES.md](docs/FAILURE_CASES.md).
+
+## Paper artifacts
+
+```bash
+python scripts/build_paper_artifacts.py
+python scripts/run_paper_smoke.py
+```
+
+Expected paper output locations:
+
+- `paper/bcdo_draft.md`
+- `paper/bcdo_claims_audit.md`
+- `paper/bcdo_results_summary.csv`
+- `paper/tables/`
+- `paper/figures/`
+
+The paper build script reads only the checked-in local CSVs and probe artifacts. It does not invent missing results or rerun the full benchmark suite automatically.

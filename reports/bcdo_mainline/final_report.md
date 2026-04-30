@@ -31,9 +31,9 @@
 
 ## 5. Runtime
 
-- Mean BCDO runtime per step: `39.5980 ms`.
-- Mean legacy fast-path runtime per step: unavailable.
-- Mean reference CNN-branch runtime per step: `32.9175 ms`.
+- Mean BCDO runtime per step: `24.0797 ms`.
+- Mean legacy fast-path runtime per step: `23.8415 ms`.
+- Mean reference CNN-branch runtime per step: `22.8265 ms`.
 
 ## 6. Ablation findings
 

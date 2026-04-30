@@ -1,0 +1,8 @@
+optimizer,mean_runtime_per_step_ms,mean_optimizer_state_mb,source_csv
+rmsprop,1.2613003022706542,0.008554978804154801,reports/accepted_bcdo/benchmark_results.csv
+sgd_momentum,1.2992001442733172,0.008540066805752818,reports/accepted_bcdo/benchmark_results.csv
+adamw,1.3407268578527711,0.017095045609907662,reports/accepted_bcdo/benchmark_results.csv
+magneto_hamiltonian_adam,4.880580417095137,0.05124040083451702,reports/accepted_bcdo/benchmark_results.csv
+bcdo_cnn_reference,22.826477558010428,0.03602183948863633,reports/accepted_bcdo/benchmark_results.csv
+bcdo_mainline_legacy,23.84153870661764,0.03602183948863633,reports/accepted_bcdo/benchmark_results.csv
+blockwise_consensus_direction_optimizer,24.079746966475376,0.03602183948863633,reports/accepted_bcdo/benchmark_results.csv

@@ -1,0 +1,23 @@
+task,mean_best_val_loss,mean_best_val_accuracy,mean_runtime_per_step_ms,line,source_csv
+block_structure_classification,0.361815055211385,0.8454861044883728,38.59253607593322,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+block_structure_classification,0.361815055211385,0.8454861044883728,38.59253607593322,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+breast_cancer_mlp,0.06172556938448296,0.9856770833333334,39.59797829918985,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+breast_cancer_mlp,0.06172556938448296,0.9856770833333334,39.59797829918985,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+digits_cnn,0.8142097269495329,0.740293562412262,53.854412752594044,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+digits_cnn,0.8142097269495329,0.740293562412262,53.854412752594044,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+digits_mlp,0.079455481066058,0.9798177083333334,39.027968420992984,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+digits_mlp,0.079455481066058,0.9798177083333334,39.027968420992984,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+direction_reversal_objective,0.0016668124590068997,,4.607054830242519,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+direction_reversal_objective,0.0016668124590068997,,4.607054830242519,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+low_rank_matrix_objective,0.09038653597235673,,6.1462227847332995,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+low_rank_matrix_objective,0.09038653597235673,,6.1462227847332995,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+moons_mlp,0.18200262884298957,0.9289434552192688,35.289227314879774,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+moons_mlp,0.18200262884298957,0.9289434552192688,35.289227314879774,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+oscillatory_valley,-0.07108680903911593,,4.536494177311329,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+oscillatory_valley,-0.07108680903911593,,4.536494177311329,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+plateau_escape_objective,-1.0500235557556152,,4.680027573254474,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+plateau_escape_objective,-1.0500235557556152,,4.680027573254474,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+saddle_objective,-4.13223139444987,,4.558947034375807,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+saddle_objective,-4.13223139444987,,4.558947034375807,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+wine_mlp,0.05800533170501387,0.9851851860682169,33.98634736772187,accepted_public_snapshot,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
+wine_mlp,0.05800533170501387,0.9851851860682169,33.98634736772187,current_runnable_output,reports/accepted_bcdo/benchmark_results.csv | reports/bcdo_mainline/benchmark_results.csv
