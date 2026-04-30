@@ -6,6 +6,8 @@ External optimizer families mentioned in the accepted public reports are documen
 
 ## Public report paths
 
+- `complete_system_inventory_and_results.md`
+  - all-in-one system, inventory, and results reference for the current repo
 - `accepted_bcdo/`
   - accepted first-release BCDO benchmark snapshot
 - `bcdo_mainline/`

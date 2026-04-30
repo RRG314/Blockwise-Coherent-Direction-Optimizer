@@ -46,6 +46,18 @@ PCGrad and CAGrad are important when there are several explicit task gradients t
 
 BCDO can operate in settings where conflicts appear, but it does not require multiple task-specific gradients. Its scoring rule is defined blockwise and can be evaluated in ordinary single-objective training.
 
+## What the internal comparator branches are for
+
+The public BCDO repo still carries internal comparison context because the accepted report story depends on it. The legacy fast path is kept so the repo can show what the accepted mainline improved relative to the older public ancestor. The reference CNN branch is kept because it makes the conv-aware branch search visible instead of pretending that the accepted line appeared fully formed.
+
+Those internal branches are benchmark context, not competing public identities. They matter because they show what kind of added complexity actually paid off and what kind of added complexity did not.
+
+## Why the public comparison burden stays narrow
+
+The repo mentions [Muon](../REFERENCES.md#muon), [Shampoo](../REFERENCES.md#shampoo), [K-FAC](../REFERENCES.md#k-fac), and [SAM](../REFERENCES.md#sam-and-asam) because they are the right literature context for a structure-aware optimizer. The accepted first-release result line, however, is intentionally centered on `AdamW`, `RMSProp`, `SGD+momentum`, the legacy fast path, the reference CNN branch, and the internal coherent-momentum comparator family. Those are the baselines the checked-in BCDO reports actually pressure-test directly.
+
+That is the right burden for the current repo. It keeps the public claim tied to the comparisons the repo really ran, while still positioning BCDO honestly relative to the broader optimizer literature.
+
 ## Why the accepted mainline stayed simple
 
 This repository keeps the internal implementation name `BlockwiseConsensusDirectionOptimizer` for compatibility, but the public method name is BCDO. The accepted mainline stayed with the fast internal path because later branches repeatedly showed the same pattern: more candidates and more controller logic increased runtime faster than they improved results.

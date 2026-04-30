@@ -38,7 +38,7 @@ The repository also keeps one reference CNN branch:
 
 ## Relation to existing optimizers
 
-BCDO is easiest to understand by contrast with the optimizer families it is measured against. `SGD` follows the raw gradient directly and `SGD+momentum` replaces that raw direction with one smoothed velocity recursion; see [SGD and momentum](REFERENCES.md#sgd-and-momentum). `RMSProp` keeps the basic gradient direction but rescales it coordinate-wise with squared-gradient history; see [RMSProp](REFERENCES.md#rmsprop). `Adam` and `AdamW` combine momentum and adaptive scaling in a single per-parameter update; see [Adam and AdamW](REFERENCES.md#adam-and-adamw). `Muon`, `Shampoo`, and `K-FAC` use matrix or tensor structure more aggressively, but they do so through orthogonalization or preconditioning rather than through explicit candidate-direction choice; see [Muon](REFERENCES.md#muon), [Shampoo](REFERENCES.md#shampoo), and [K-FAC](REFERENCES.md#k-fac).
+BCDO is easiest to understand by contrast with the optimizer families it is measured against. `SGD` follows the raw gradient directly and `SGD+momentum` replaces that raw direction with one smoothed velocity recursion; see [SGD and momentum](REFERENCES.md#sgd-and-momentum). `RMSProp` keeps the basic gradient direction but rescales it coordinate-wise with squared-gradient history; see [RMSProp](REFERENCES.md#rmsprop). `Adam` and `AdamW` combine momentum and adaptive scaling in a single per-parameter update; see [Adam and AdamW](REFERENCES.md#adam-and-adamw). `Muon`, `Shampoo`, and `K-FAC` use matrix or tensor structure more aggressively, but they do so through orthogonalization or preconditioning rather than through explicit candidate-direction choice; see [Muon](REFERENCES.md#muon), [Shampoo](REFERENCES.md#shampoo), and [K-FAC](REFERENCES.md#k-fac). `SAM` and `ASAM` are useful comparison points for stability and generalization, but they perturb the objective neighborhood rather than selecting among blockwise direction candidates; see [SAM and ASAM](REFERENCES.md#sam-and-asam).
 
 BCDO is different in a narrower and more concrete way. It does not start from one gradient direction and then keep modifying that direction. It forms a small candidate set per block, scores the candidates, selects one winner, and only then decides how far to move. That is why this repository treats BCDO as a direction-selection optimizer rather than as another Adam variant with extra controls.
 
@@ -51,6 +51,8 @@ This repo also compares against a small internal coherent-momentum comparator fa
 BCDO is aimed at training situations where the local gradient is not obviously the direction that should be followed block-for-block. That can happen when optimization repeatedly oscillates along narrow valleys, when block structure matters more than coordinate-wise scaling, when direction reverses under unstable local geometry, or when structured consensus across rows, filters, or tensor slices matters more than one-step raw descent.
 
 The optimizer therefore asks a different question from standard adaptive methods. Instead of only asking how large an update should be, it also asks whether the block should trust the raw gradient, a consensus direction, a memory direction, or a structure-aware matrix direction. The accepted benchmark suite is built around that narrower question rather than around a broad “best default optimizer” claim.
+
+For a newcomer, the most useful first pass is usually: read [docs/METHOD.md](docs/METHOD.md), run the smoke command once, and then inspect [reports/accepted_bcdo/final_report.md](reports/accepted_bcdo/final_report.md). That path shows the public code, the public claim, and the accepted result snapshot before the broader branch history or probe folders get in the way.
 
 ## Method
 
@@ -88,6 +90,8 @@ Each candidate is scored using:
 - conflict penalty
 - cost penalty
 
+In practical optimizer terms, these terms do different jobs. Descent alignment asks whether a candidate still points downhill for the current block. Memory coherence and quality memory ask whether it agrees with directions that were recently useful, instead of only being large or recent. Norm stability penalizes abrupt scale changes that often accompany unstable local geometry. Consensus support rewards candidates that line up with structured agreement across a matrix or convolutional block. Oscillation and conflict penalties try to keep the selector from following a direction that looks locally plausible but is already reversing or fighting nearby signals. The cost term is there to keep more structured candidates from winning unless they actually earn that added complexity.
+
 ### Selection rule
 
 BCDO uses winner-take-all selection:
@@ -103,6 +107,8 @@ The selected block direction is scaled with a bounded block-energy rule:
 Convolutional tensors use typed conv-safe scaling on top of the same direction-selection core. The accepted mainline deliberately keeps that convolutional logic on the scaling side rather than turning it into another full candidate generator, because earlier branch work did not justify the heavier alternative on the accepted benchmark line.
 
 The important practical point is that BCDO keeps direction choice and magnitude control separate. Standard adaptive methods usually intertwine those operations. BCDO first decides which candidate direction to trust and then scales the chosen direction with a bounded block-energy rule. That separation is what makes the method easier to inspect and easier to compare honestly against both first-order baselines and more structured matrix-aware baselines.
+
+The repo does not claim that every part of that score is theory-derived. The candidate-selection structure, winner-take-all rule, and block-energy step are the central design choices. The exact score balance remains heuristic and is only kept in the public line where the accepted ablation results support it.
 
 ## Current implementation
 
@@ -190,6 +196,8 @@ These are the tests used as repo-readiness evidence. They cover import paths, in
 
 Use these focused tests for this repository. Full parent-workspace failures are not relevant readiness evidence for BCDO.
 
+If you only want one command to check that the public surface is alive before you read deeper, run `python scripts/run_bcdo_smoke.py`.
+
 ## Running benchmarks
 
 Mainline scripts:
@@ -214,6 +222,8 @@ python scripts/export_bcdo_cnn_reference_report.py
 
 The accepted public snapshot and the current runnable mainline are kept separate on purpose. That lets the repository preserve the accepted first-release benchmark line while still supporting new smoke and export runs from the current code.
 
+That split is part of the repo’s public discipline, not a packaging accident. The accepted snapshot is the line the README cites. The runnable mainline is where fresh local runs should write. Keeping them separate avoids quietly replacing the first-release benchmark story every time the scripts are re-run.
+
 ## What it compares against
 
 The accepted mainline benchmark config keeps the baselines that matter most for the BCDO claim:
@@ -226,6 +236,8 @@ The accepted mainline benchmark config keeps the baselines that matter most for 
 - the internal coherent momentum comparator family
 
 The goal of that comparison set is not to create a maximal optimizer zoo. It is to keep the comparison burden honest around the actual question this repository is asking: whether blockwise direction selection improves the update decision in structure-sensitive or stress-sensitive regimes without collapsing back into a standard first-order controller.
+
+Methods such as `Muon`, `Shampoo`, `K-FAC`, and `SAM` still appear in the docs because they are the right literature context for a structure-aware optimizer. They are not presented as if they were part of the accepted first-release leaderboard when the checked-in public reports did not run that direct comparison.
 
 ## Results
 
@@ -262,6 +274,8 @@ The evidence supports a structured, narrower conclusion. BCDO is most defensible
 
 The current evidence does **not** support a universal optimizer claim, a broad CNN leadership claim, or a replacement claim over `RMSProp` or `SGD+momentum`. The repo keeps those limits visible on purpose because they are part of what makes the accepted benchmark story credible.
 
+A safe public sentence to repeat from the current repo is: BCDO is a blockwise direction-selection optimizer that can help on structure-sensitive and stress-sensitive slices, but it is not a general replacement for RMSProp, SGD with momentum, or AdamW.
+
 ### Reference CNN branch and probe summary
 
 The repository keeps a separate reference CNN branch because CNN-side behavior improved through typed conv-safe scaling and conv-aware trust rules, but those ideas were not fully absorbed into the accepted public mainline without tradeoffs. The reference CNN branch and the focused CNN probe reports are included so that a newcomer can see both what helped and what still remains unresolved.
@@ -291,6 +305,8 @@ The accepted public reports now point back to [REFERENCES.md](REFERENCES.md) whe
 BCDO is not a universal optimizer. It is still slower than [SGD](REFERENCES.md#sgd-and-momentum), [RMSProp](REFERENCES.md#rmsprop), and [AdamW](REFERENCES.md#adam-and-adamw). CNN behavior is still under development, and PINNs are not currently a winning target for this optimizer family. The best current interpretation is a structured specialist/generalist hybrid, not a broad default replacement.
 
 If you want the longer explanation of those limits, including why the reference CNN branch is still separate, see [docs/CNN_REFERENCE.md](docs/CNN_REFERENCE.md) and [reports/repo_update_report.md](reports/repo_update_report.md).
+
+The fuller failure-boundary note is in [docs/FAILURE_CASES.md](docs/FAILURE_CASES.md).
 
 ## Known failure cases
 

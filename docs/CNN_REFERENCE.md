@@ -25,3 +25,5 @@ It is the clean reference implementation for the idea:
 - better CNN behavior in parts of the search space
 - meaningful reference when testing whether conv trust should return to the mainline
 - preserves the branch history cleanly for future work and external review
+
+It is also the clearest reminder that BCDO’s current public line is not hiding its unresolved CNN story. The accepted mainline includes the lower-cost conv-safe pieces that survived the branch search. The reference branch shows what happened when conv-aware trust was pushed further. That is why it stays in the repo even though it is not the first-release public identity.
