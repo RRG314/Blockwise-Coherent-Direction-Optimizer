@@ -1,0 +1,9 @@
+output_dir: reports/bcdo_mainline
+device: cpu
+seeds: [11, 29]
+ablation_epoch_scale: 0.4
+ablation_tasks:
+  - breast_cancer_mlp
+  - digits_cnn
+  - oscillatory_valley
+  - low_rank_matrix_objective

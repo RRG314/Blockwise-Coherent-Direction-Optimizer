@@ -1,0 +1,20 @@
+output_dir: reports/block_direction_v42
+device: cpu
+seeds: [11]
+search_budget: 2
+search_seed: 2201
+optimizers:
+  - block_direction_optimizer_v42
+  - block_direction_optimizer_v4_fast
+  - block_direction_optimizer_v41
+  - adamw
+  - rmsprop
+  - sgd_momentum
+  - magneto_hamiltonian_adam
+tuning_tasks:
+  - breast_cancer_mlp
+  - digits_mlp
+  - digits_cnn
+  - oscillatory_valley
+  - saddle_objective
+tuning_epoch_scale: 0.45

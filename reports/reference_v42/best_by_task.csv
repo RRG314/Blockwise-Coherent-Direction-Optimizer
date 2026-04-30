@@ -1,0 +1,7 @@
+task,best_optimizer,task_family,score,mean_best_val_loss,mean_best_val_accuracy
+breast_cancer_mlp,rmsprop,neural,0.98828125,0.05673210831203803,0.98828125
+digits_cnn,rmsprop,neural,0.9166074792544047,0.27347661182284355,0.9166074792544047
+digits_mlp,rmsprop,neural,0.9825797080993653,0.08341802190989255,0.9825797080993653
+oscillatory_valley,magneto_hamiltonian_adam,stress,-0.1567370444536209,-0.1567370444536209,
+plateau_escape_objective,sgd_momentum,stress,-1.0500235557556152,-1.0500235557556152,
+saddle_objective,sgd_momentum,stability,-4.132231076558431,-4.132231076558431,

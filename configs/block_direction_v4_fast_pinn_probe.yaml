@@ -1,0 +1,19 @@
+output_dir: reports/bcdo_pinn_probe
+device: cpu
+seeds: [11, 29, 47]
+use_tuning_results: true
+benchmark_epoch_scale: 0.65
+optimizers:
+  - block_direction_optimizer_v4_fast
+  - block_direction_optimizer_v3
+  - adamw
+  - rmsprop
+  - sgd_momentum
+  - magneto_hamiltonian_adam
+  - real_hamiltonian_adam
+  - lbfgs
+  - adamw_lbfgs_hybrid
+benchmark_tasks:
+  - pinn_harmonic_oscillator
+  - pinn_poisson_1d
+  - pinn_heat_equation

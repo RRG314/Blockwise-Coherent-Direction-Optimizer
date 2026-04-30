@@ -1,0 +1,12 @@
+task,best_optimizer,task_family,score,mean_best_val_loss,mean_best_val_accuracy
+block_structure_classification,sgd_momentum,structure,0.8463541666666666,0.36557234823703766,0.8463541666666666
+breast_cancer_mlp,rmsprop,neural,0.98828125,0.05673210831203803,0.98828125
+digits_cnn,sgd_momentum,neural,0.934225062529246,0.2052512057125568,0.934225062529246
+digits_mlp,block_direction_optimizer_v42,neural,0.9811197916666666,0.07706791193534927,0.9811197916666666
+direction_reversal_objective,sgd_momentum,stress,0.0016666674055158999,0.0016666674055158999,
+low_rank_matrix_objective,magneto_hamiltonian_adam,structure,0.002642953225100967,0.002642953225100967,
+moons_mlp,sgd_momentum,neural,0.9947916666666666,0.047121211575965,0.9947916666666666
+oscillatory_valley,sgd_momentum,stress,-0.07113398611545564,-0.07113398611545564,
+plateau_escape_objective,rmsprop,stress,-1.0500235557556152,-1.0500235557556152,
+saddle_objective,sgd_momentum,stability,-4.132232189178467,-4.132232189178467,
+wine_mlp,sgd_momentum,neural,1.0,0.009711139278749633,1.0

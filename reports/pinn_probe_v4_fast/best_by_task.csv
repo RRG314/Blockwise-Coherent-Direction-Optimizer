@@ -1,0 +1,4 @@
+task,best_optimizer,task_family,score,mean_best_val_loss,mean_best_val_accuracy
+pinn_harmonic_oscillator,adamw_lbfgs_hybrid,physics,0.01285558364664515,0.01285558364664515,
+pinn_heat_equation,lbfgs,physics,6.021187838693246e-07,6.021187838693246e-07,
+pinn_poisson_1d,adamw_lbfgs_hybrid,physics,1.3003777776798842e-09,1.3003777776798842e-09,
